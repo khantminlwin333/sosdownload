@@ -50,7 +50,12 @@
     </footer>
     <script>
         // Call backend to get the device count
-        fetch('https://sos-mm.fly.dev/api/devices/validate-and-count-devices')
+        fetch('https://sos-mm.fly.dev/api/devices/validate-and-count-devices', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
           .then(response => response.json())
           .then(data => {
             const countElement = document.getElementById('device-count');
