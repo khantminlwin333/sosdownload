@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOSMM</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="/fav.png" type="image/png">
+    <!-- Add your custom styles or external CSS here -->
+</head>
+<body>
+    <header>
+        <img src="/fav.png" width="55" height="55">
+        <p>We are just trying to help people — nothing more.</p>
+    </header>
+    
+    <section>
+        <h2>Download SOSMM</h2>
+        <p>Click the button below to download and install the app on your Android device. Make sure to allow installation from unknown sources in your phone settings if you haven't already. And this app has nothing to do with your privacy.</p>
+
+        <a href="https://docs.google.com/uc?export=download&id=12uwBQCuqMF4s_t73pDdWQ0ZDBmEPJduO" class="download-btn" download>
+            Download APK
+        </a> (You need to Open VPN)
+        
+    </section>
+
+    <section>
+        <h2>How to Install</h2>
+        <ul>
+            <li>1. Download the APK file.</li>
+            <li>2. Go to your device settings.</li>
+            <li>3. Allow installation from unknown sources (Settings > Security > Install unknown apps).</li>
+            <li>4. If your app show like "It can harmes", tap to "Install anyway"</li>
+            <li>5. Open the downloaded APK file to begin installation.</li>
+            <li>6. Follow the on-screen instructions to complete the installation.</li>
+        </ul>
+    </section>
+    <section>
+        <p class="count" id="device-count">Loading user count...</p>
+      </section>
+    <section class="link">
+    <a href="https://www.facebook.com/mgsansu"><img src="/facebook.png" width="32" height="32"/></a>
+    
+    <a href="https://github.com/khantminlwin333/sosmmmobile"> <img src="/github.png" width="32" height="32"/></a>
+
+    <a href="mailto:khantminlwin333@gmail.com"> <img src="/email.png" width="32" height="32"/></a>
+    </section>
+    <footer>
+        <p>&copy; 2025 SOSMM. All rights reserved.</p>
+    </footer>
+    <script>
+        // Call backend to get the device count
+        fetch('https://sos-mm.fly.dev/api/devices/validate-and-count-devices')
+          .then(response => response.json())
+          .then(data => {
+            const countElement = document.getElementById('device-count');
+            if (data.deviceCount !== undefined) {
+              countElement.textContent = `${data.deviceCount} users are using now!`;
+            } else {
+              countElement.textContent = 'User count unavailable';
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching device count:', error);
+            document.getElementById('device-count').textContent = 'Error loading user count';
+          });
+      </script>
+</body>
+</html>
